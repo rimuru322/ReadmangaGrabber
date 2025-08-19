@@ -65,7 +65,7 @@ func GetChaptersList(w http.ResponseWriter, r *http.Request) {
 			"Ошибка при получении списка глав",
 			slog.String("Message", "Указанный адрес не поддерживается"),
 		)
-		tools.SendError("Указанный вами адрес не поддерживается." + host, w)
+		tools.SendError("Указанный вами адрес не поддерживается.", w)
 		return
 	}
 
