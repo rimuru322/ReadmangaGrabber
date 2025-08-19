@@ -1,6 +1,7 @@
-# Manga Grabber (v2) [![Build status](https://api.travis-ci.com/lirix360/ReadmangaGrabber.svg?branch=master)](https://travis-ci.com/github/lirix360/ReadmangaGrabber) [![Go Report Card](https://img.shields.io/badge/go%20report-A+-brightgreen.svg?style=flat)](https://goreportcard.com/report/github.com/lirix360/readmangagrabber)
+# Manga Grabber (v2) 
 
 Утилита для скачивания манги с сайтов ReadManga, MintManga и SelfManga.
+На 19.08.25 работают zazaza, selfmanga, mintmanga (с авторизацией).
 
 ## Возможности
 
@@ -12,7 +13,7 @@
 
 ## Использование
 
-* Скачать последнюю версию для вашей ОС из [раздела релизов](https://github.com/lirix360/ReadmangaGrabber/releases/latest)
+* Скачать последнюю версию для вашей ОС из [раздела релизов](https://github.com/rimuru322/ReadmangaGrabber/releases/latest)
 * Распаковать в удобное место
 * Запустить исполняемый файл (grabber_win_x64.exe, grabber_linux_x64 или grabber_osx_x64)
 
