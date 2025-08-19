@@ -201,7 +201,7 @@ func GetURLs() data.CurrentURLS {
 			return curURLs
 		}
 	} else {
-		resp, err := http.Get("https://raw.githubusercontent.com/lirix360/ReadmangaGrabber/master/src_list.json")
+		resp, err := http.Get("https://raw.githubusercontent.com/rimuru322/ReadmangaGrabber/refs/heads/master/src_list.json")
 		if err != nil {
 			slog.Error(
 				"Ошибка при получении списков URL библиотек",

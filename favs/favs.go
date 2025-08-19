@@ -172,7 +172,7 @@ func SaveFav(w http.ResponseWriter, r *http.Request) {
 			favData.Name = mangaInfo.TitleOrig
 		}
 	} else {
-		tools.SendError("Указанный вами адрес не поддерживается.", w)
+		tools.SendError("Указанный вами адрес не поддерживается." + host, w)
 		return
 	}
 

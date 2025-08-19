@@ -341,7 +341,7 @@ func DownloadChapter(downData data.DownloadOpts, curChapter data.ChaptersList) (
 		return nil, errors.New("noauth")
 	}
 
-	r := regexp.MustCompile(`rm_h\.readerDoInit\(\[\[(.+)\]\],\s(false|true),\s(\[.+\]).+\);`)
+	r := regexp.MustCompile(`rm_h\.readerInit\(\[\[(.+)\]\],\s(false|true),\s(\[.+\]).+\);`)
 
 	srvList := ServersList{}
 
@@ -433,17 +433,17 @@ func DlImage(imgURL, chapterPath string, srvList ServersList, retry int) (string
 	client := grab.NewClient()
 	client.UserAgent = config.Cfg.UserAgent
 
-	url, _ := urlx.Parse(imgURL)
-	host, _, _ := urlx.SplitHostPort(url)
-
-	if host == "one-way.work" {
-		imgURL = strings.Split(imgURL, "?")[0]
+	parts := strings.SplitN(imgURL, "?", 2)
+	if len(parts) > 0 {
+		imgURL = parts[0]
 	}
+
 
 	req, err := grab.NewRequest(chapterPath, imgURL)
 	if err != nil {
 		slog.Error(
-			"Ошибка при скачивании страницы",
+			"Ошибка при скачивании страницы[1]",
+			"IMGURL: " + imgURL,
 			slog.String("Message", err.Error()),
 		)
 		if retry == maxRetry {
@@ -460,7 +460,7 @@ func DlImage(imgURL, chapterPath string, srvList ServersList, retry int) (string
 	if resp.Err() != nil {
 		if resp.HTTPResponse != nil && resp.HTTPResponse.StatusCode == 404 {
 			slog.Error(
-				"Ошибка при скачивании страницы",
+				"Ошибка при скачивании страницы[2]",
 				slog.String("Message", resp.Err().Error()),
 			)
 			if retry == maxRetry {
@@ -472,7 +472,8 @@ func DlImage(imgURL, chapterPath string, srvList ServersList, retry int) (string
 			}
 		} else {
 			slog.Error(
-				"Ошибка при скачивании страницы",
+				"Ошибка при скачивании страницы[3]",
+				"IMGURL: " + imgURL,
 				slog.String("Message", resp.Err().Error()),
 			)
 			if retry == maxRetry {

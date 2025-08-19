@@ -31,7 +31,7 @@ func CheckUpdate(w http.ResponseWriter, r *http.Request) {
 
 	hasError := false
 
-	resp, err := http.Get("https://raw.githubusercontent.com/lirix360/ReadmangaGrabber/master/version.json")
+	resp, err := http.Get("https://raw.githubusercontent.com/rimuru322/ReadmangaGrabber/master/version.json")
 	if err != nil {
 		slog.Error(
 			"Ошибка при запросе информации о версии",
